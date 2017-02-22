@@ -1,0 +1,23 @@
+<!-- <h1>Site#hello</h1>
+<p>Find me in app/views/site/hello.html.erb</p> -->
+
+<h2>Welcome to the page </h2>
+
+<%= 2+2 %>
+<%=link_to "click", site_goodbye_path%>
+<a href="/site/goodbye">Say GoodBye</a>
+
+<% names = ["Sumanth","Ajith","Mayank"]%>
+
+<h3>List of Names</h3>
+<ul>
+
+<% names.each do |name| %>
+
+<li><%= name.upcase %></li>
+
+<% end %>
+</ul>
+
+Name: <input type="text" name="u_name" placeholder="enter your name.." >
+

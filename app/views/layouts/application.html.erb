@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Istarindia</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+      
+
+       <% if user_signed_in?%>
+
+       <p>Welcome <%= current_user.email%></p>
+        <p><%= current_user.user_type%></p>
+
+
+         <% if current_user.user_type == "CONTENT_CREATOR"%>
+         <p>Your Logged-in as CONTENT_CREATOR</p>
+         <%elsif current_user.user_type == "CONTENT_ADMIN"%>
+           <p>Your Logged-in as CONTENT_ADMIN</p>
+          <%elsif current_user.user_type == "CONTENT_REVIEWER"%>
+            <p>Your Logged-in as CONTENT_REVIEWER</p>
+           <%elsif current_user.user_type == "SUPER_ADMIN"%>
+             <p>Your Logged-in as SUPER_ADMIN</p>
+
+        <%else%>
+        <p>Your Logged-in as User</p>
+
+           <%end%>
+
+
+       <%= link_to "Account Settings", edit_user_registration_path%>
+              <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+              <%else%>
+
+               <%= link_to "Login", new_user_session_path%>
+              <%= link_to "Register", new_user_registration_path %>
+
+              <%end%>
+
+              <p id="notice"><%= notice %></p>
+              <p id="alert"><%= alert %></p>
+
+      <%= yield %>
+
+</body>
+</html>
